@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12-Week Internship Roadmap</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #000000;
+            color: #ffffff;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #FF0000 0%, #FF3366 50%, #6B2DFF 100%);
+            padding: 100px 60px;
+            position: relative;
+            overflow: hidden;
+            min-height: 500px;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .hero-left {
+            margin-bottom: 50px;
+        }
+        
+        .hero-left h1 {
+            font-size: 72px;
+            font-weight: 800;
+            margin-bottom: 24px;
+            letter-spacing: -3px;
+            line-height: 1.1;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero-left p {
+            font-size: 20px;
+            opacity: 0.95;
+            font-weight: 500;
+            letter-spacing: -0.3px;
+            line-height: 1.6;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .phase-boxes {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .phase-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            padding: 28px 24px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .phase-box:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+        
+        .phase-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.8;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .phase-weeks {
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+        
+        .phase-title {
+            font-size: 18px;
+            font-weight: 600;
+            opacity: 0.95;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 80px 40px;
+        }
+        
+        .section {
+            margin-bottom: 100px;
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+        
+        .section-badge {
+            background: linear-gradient(135deg, #FF0000, #FF3366);
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+        
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -1.2px;
+        }
+        
+        .weeks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+        }
+        
+        .week-card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            border: 2px solid #333;
+            border-radius: 20px;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .week-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #FF0000, #FF3366, #6B2DFF);
+        }
+        
+        .week-card:hover {
+            transform: translateY(-8px);
+            border-color: #FF0000;
+            box-shadow: 0 20px 60px rgba(255, 0, 0, 0.3);
+        }
+        
+        .week-number {
+            font-size: 42px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FF0000, #FF3366);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            line-height: 1;
+            letter-spacing: -1px;
+        }
+        
+        .week-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -0.8px;
+        }
+        
+        .week-subtitle {
+            font-size: 13px;
+            color: #999;
+            margin-bottom: 24px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+        
+        .activities-list {
+            margin-bottom: 30px;
+        }
+        
+        .activities-list h4 {
+            font-size: 12px;
+            color: #FF0000;
+            margin-bottom: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+        
+        .activities-list ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .activities-list li {
+            padding-left: 24px;
+            margin-bottom: 10px;
+            position: relative;
+            font-size: 14px;
+            color: #ccc;
+            line-height: 1.7;
+            font-weight: 400;
+        }
+        
+        .activities-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #FF0000;
+            font-weight: 700;
+        }
+        
+        .nested-list {
+            margin-top: 8px;
+            margin-left: 24px;
+        }
+        
+        .nested-list li {
+            font-size: 13px;
+            color: #999;
+            margin-bottom: 6px;
+            font-weight: 400;
+        }
+        
+        .nested-list li::before {
+            content: '•';
+            color: #666;
+        }
+        
+        .deliverable-box {
+            background: rgba(255, 0, 0, 0.1);
+            border-left: 4px solid #FF0000;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        .deliverable-box strong {
+            color: #FF0000;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        
+        .deliverable-box p {
+            font-size: 15px;
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: -0.3px;
+        }
+        
+        .campaign-section {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+            border: 3px solid #FF0000;
+            border-radius: 30px;
+            padding: 60px;
+            margin-bottom: 80px;
+        }
+        
+        .campaign-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .campaign-title {
+            font-size: 42px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FF0000, #6B2DFF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: -1.5px;
+        }
+        
+        .campaign-subtitle {
+            font-size: 18px;
+            color: #999;
+            font-weight: 500;
+            letter-spacing: -0.3px;
+        }
+        
+        .campaign-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .campaign-box {
+            background: #1a1a1a;
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid #333;
+        }
+        
+        .campaign-box h3 {
+            font-size: 16px;
+            color: #FF0000;
+            margin-bottom: 16px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        
+        .campaign-box ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .campaign-box li {
+            padding-left: 24px;
+            margin-bottom: 10px;
+            position: relative;
+            font-size: 14px;
+            color: #ccc;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+        
+        .campaign-box li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #FF0000;
+            font-weight: 700;
+        }
+        
+        .metrics-section {
+            background: linear-gradient(135deg, #FF0000 0%, #6B2DFF 100%);
+            padding: 80px 60px;
+            border-radius: 30px;
+            margin-bottom: 80px;
+        }
+        
+        .metrics-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .metrics-header h2 {
+            font-size: 38px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            letter-spacing: -1.5px;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+        
+        .metric-card {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .metric-icon {
+            font-size: 56px;
+            margin-bottom: 20px;
+        }
+        
+        .metric-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+        
+        .metric-desc {
+            font-size: 14px;
+            opacity: 0.9;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 60px 40px;
+            border-top: 2px solid #333;
+        }
+        
+        .footer h3 {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            letter-spacing: -0.8px;
+        }
+        
+        .tools-grid {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .tool-badge {
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+            border: 2px solid #333;
+            padding: 14px 28px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s;
+            letter-spacing: -0.2px;
+        }
+        
+        .tool-badge:hover {
+            border-color: #FF0000;
+            transform: translateY(-2px);
+        }
+        
+        .why-section {
+            background: #1a1a1a;
+            padding: 60px;
+            border-radius: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .why-section h3 {
+            font-size: 30px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-align: center;
+            letter-spacing: -1px;
+        }
+        
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        
+        .why-item {
+            display: flex;
+            gap: 20px;
+            align-items: start;
+        }
+        
+        .why-number {
+            font-size: 32px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FF0000, #6B2DFF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            flex-shrink: 0;
+            letter-spacing: -1px;
+        }
+        
+        .why-text {
+            font-size: 15px;
+            color: #ccc;
+            line-height: 1.7;
+            font-weight: 400;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="hero-content">
+            <div class="hero-left">
+                <h1>Adobe Security Marketing Intern — Roadmap</h1>
+                <p>This roadmap shows how I would approach the four core responsibilities of the Security Marketing intern role across a 12-week internship period.</p>
+            </div>
+            <div class="phase-boxes">
+                <div class="phase-box">
+                    <div class="phase-label">Phase 1</div>
+                    <div class="phase-weeks">Weeks 1–4</div>
+                    <div class="phase-title">Editorial</div>
+                </div>
+                <div class="phase-box">
+                    <div class="phase-label">Phase 2</div>
+                    <div class="phase-weeks">Weeks 5–8</div>
+                    <div class="phase-title">Metrics</div>
+                </div>
+                <div class="phase-box">
+                    <div class="phase-label">Phase 3</div>
+                    <div class="phase-weeks">Weeks 9–12</div>
+                    <div class="phase-title">Campaign</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <!-- EDITORIAL CALENDAR: WEEKS 1-4 -->
+        <div class="section" id="editorial">
+            <div class="section-header">
+                <div class="section-badge">Weeks 1-4</div>
+                <div class="section-title">Strengthen Editorial Calendar & Roadmap</div>
+            </div>
+            
+            <div class="weeks-grid">
+                <div class="week-card">
+                    <div class="week-number">01-02</div>
+                    <div class="week-title">Audit Current State</div>
+                    <div class="week-subtitle">Research & Discovery</div>
+                    
+                    <div class="activities-list">
+                        <h4>Activities</h4>
+                        <ul>
+                            <li>Map all external security engagement channels:
+                                <ul class="nested-list">
+                                    <li>Adobe Security Blog</li>
+                                    <li>Bug Bounty Program communications</li>
+                                    <li>PSIRT announcements</li>
+                                    <li>Security conference presence (BSidesSF, Ambassador World Cup)</li>
+                                    <li>Moments & events (Cybersecurity Awareness Month, Adobe MAX)</li>
+                                    <li>Trust Center updates</li>
+                                </ul>
+                            </li>
+                            <li>Tag each asset with pillar (ASPL/Product Security, Operational/IR, Compliance, Content Authenticity) + audience (Developer, Field, CISO/Buyer, Creative Ops)</li>
+                            <li>Interview stakeholders across security teams to understand their communication needs</li>
+                            <li>Review past 6 months of security content to identify patterns and gaps</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="deliverable-box">
+                        <strong>Deliverable</strong>
+                        <p>Current State Assessment (one-pager showing all initiatives, frequency, owners, and audiences)</p>
+                    </div>
+                </div>
+                
+                <div class="week-card">
+                    <div class="week-number">03</div>
+                    <div class="week-title">Build Calendar Framework</div>
+                    <div class="week-subtitle">Strategy & Structure</div>
+                    
+                    <div class="activities-list">
+                        <h4>Activities</h4>
+                        <ul>
+                            <li>Create unified editorial calendar in Workfront:
+                                <ul class="nested-list">
+                                    <li>Monthly security blog cadence</li>
+                                    <li>Quarterly trust themes</li>
+                                    <li>Annual moments (CSAM, conferences, Adobe MAX)</li>
+                                    <li>Product security announcements (tied to release cycles)</li>
+                                    <li>Community engagement touchpoints</li>
+                                </ul>
+                            </li>
+                            <li>Identify content themes by quarter:
+                                <ul class="nested-list">
+                                    <li>Q2: AI Security & Firefly</li>
+                                    <li>Q3: Bug Bounty Program expansion</li>
+                                    <li>Q4: Content Authenticity & C2PA adoption</li>
+                                </ul>
+                            </li>
+                            <li>Map content to audiences: Security researchers, enterprise customers, developers, policy makers</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="deliverable-box">
+                        <strong>Deliverable</strong>
+                        <p>12-Month Editorial Calendar Template with clear owners, deadlines, and distribution channels</p>
+                    </div>
+                </div>
+                
+                <div class="week-card">
+                    <div class="week-number">04</div>
+                    <div class="week-title">Socialize & Refine</div>
+                    <div class="week-subtitle">Feedback & Implementation</div>
+                    
+                    <div class="activities-list">
+                        <h4>Activities</h4>
+                        <ul>
+                            <li>Present calendar framework to security team leads</li>
+                            <li>Gather feedback and incorporate adjustments</li>
+                            <li>Set up recurring calendar review meetings (monthly)</li>
+                            <li>Document submission process (JIRA/Workfront form) for adding new initiatives</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="deliverable-box">
+                        <strong>Deliverable</strong>
+                        <p>Finalized Editorial Calendar + Process Documentation</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- METRICS: WEEKS 5-8 -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-badge" style="background: linear-gradient(135deg, #6B2DFF, #9D5CFF);">Weeks 5-8</div>
+                <div class="section-title">Expand Metrics & Dashboard Program</div>
+            </div>
+            
+            <div class="weeks-grid">
+                <div class="week-card">
+                    <div class="week-number">05</div>
+                    <div class="week-title">Define "Trust Pulse"</div>
+                    <div class="week-subtitle">Metric Development</div>
+                    
+                    <div class="activities-list">
+                        <h4>Activities</h4>
+                        <ul>
+                            <li>Research current metrics: What's already being tracked? (website traffic, blog engagement, bug bounty submissions)</li>
+                            <li>Identify gaps: What's NOT being measured that matters?</li>
+                            <li>Develop composite "Trust Pulse" metric that combines:
+                                <ul class="nested-list">
+                                    <li><strong>Awareness:</strong> Adobe Trust Center visits, security blog readership</li>
+                                    <li><strong>Engagement:</strong> Bug bounty program participation, conference attendance</li>
+                                    <li><strong>Sentiment:</strong> Community perception (social mentions, researcher feedback)</li>
+                                    <li><strong>Impact:</strong> Customer trust scores, security-related sales enablement usage</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="deliverable-box">
+                        <strong>Deliverable</strong>
+                        <p>Trust Pulse Metric Definition Document</p>
+                    </div>
+                </div>
+                
+                <div class="week-card">
+                    <div class="week-number">06-07</div>
+                    <div class="week-title">Build Dashboard in PowerBI</div>
+                    <div class="week-subtitle">Data Integration & Visualization</div>
+                    
+                    <div class="activities-list">
+                        <h4>Activities</h4>
+                        <ul>
+                            <li>Build a PowerBI model fed by:
+                                <ul class="nested-list">
+                                    <li>Adobe Analytics exports for Trust Center / Security Blog (UTM'd links)</li>
+                                    <li>LinkedIn post analytics CSV</li>
+                                    <li>SharePoint file analytics (field slide/talk‑track)</li>
+                                    <li>(Optional, with approval) PSIRT/bug bounty aggregate metrics and high‑level social listening snapshots</li>
+                                </ul>
+                            </li>
+                            <li>Create BI visuals:
+                                <ul class="nested-list">
+                                    <li>Trust Pulse trend line (Reach → Enablement → Assist)</li>
+                                    <li>Breakdown by initiative (blog, events, content authenticity)</li>
+                                    <li>Audience segmentation (researchers vs. customers vs. partners)</li>
+                                    <li>QoQ comparisons (where available)</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="deliverable-box">
+                        <strong>Deliverable</strong>
+                        <p>PowerBI Dashboard (v1) with 2‑slide "How to read this" explainer</p>
+                    </div>
+                </div>
+                
+                <div class="week-card">
+                    <div class="week-number">08</div>
+                    <div class="week-title">Present Insights</div>
+                    <div class="week-subtitle">Analysis & Recommendations</div>
+                    
+                    <div class="activities-list">
+                        <h4>Activities</h4>
+                        <ul>
+                            <li>Analyze first month of Trust Pulse data</li>
+                            <li>Identify 3 key trends:
+                                <ul class="nested-list">
+                                    <li>Which initiatives drive most engagement?</li>
+                                    <li>Where are we underperforming?</li>
+                                    <li>What opportunities exist?</li>
+                                </ul>
+                            </li>
+                            <li>Create summary deck with recommendations</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="deliverable-box">
+                        <strong>Deliverable</strong>
+                        <p>"Trust Pulse Insights" Presentation + Recommendations for Q3</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CAMPAIGN: WEEKS 9-12 -->
+        <div class="campaign-section">
+            <div class="campaign-header">
+                <div class="section-badge" style="margin: 0 auto 20px;">Weeks 9-12</div>
+                <div class="campaign-title">Proof at Capture</div>
+                <div class="campaign-subtitle">Spear-Targeted Campaign: Content Authenticity for Photojournalism</div>
+            </div>
+            
+            <div class="campaign-grid">
+                <div class="campaign-box">
+                    <h3>Target & Rationale</h3>
+                    <ul>
+                        <li><strong>Audience:</strong> Photojournalists and news organizations</li>
+                        <li>Need to prove image authenticity in age of deepfakes</li>
+                        <li>This is a trust and security issue, not just a creative tool</li>
+                    </ul>
+                </div>
+                
+                <div class="campaign-box">
+                    <h3>Message Frames to Test</h3>
+                    <ul>
+                        <li><strong>Frame A:</strong> "Prove authenticity in real-time from conflict zones"</li>
+                        <li><strong>Frame B:</strong> "Protect your credibility against deepfake accusations"</li>
+                    </ul>
+                </div>
+                
+                <div class="campaign-box">
+                    <h3>Content to Deploy</h3>
+                    <ul>
+                        <li>LinkedIn case study: Photojournalist using Content Credentials</li>
+                        <li>Blog: "Why Authenticity Matters"</li>
+                        <li>Whitepaper for news organizations on implementation</li>
+                    </ul>
+                </div>
+                
+                <div class="campaign-box">
+                    <h3>Success Metrics (Trust Pulse)</h3>
+                    <ul>
+                        <li>Engagement from news organization domains</li>
+                        <li>Whitepaper downloads</li>
+                        <li>Enterprise customer inquiries</li>
+                        <li>Which message frame drives more interest</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="margin-top: 40px; text-align: center;">
+                <div class="deliverable-box" style="max-width: 600px; margin: 0 auto;">
+                    <strong>Deliverable</strong>
+                    <p>Campaign Results + Field Enablement Talking Points for Sales Teams</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- SUCCESS METRICS -->
+        <div class="metrics-section">
+            <div class="metrics-header">
+                <h2>Success Metrics</h2>
+            </div>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-icon">📅</div>
+                    <div class="metric-title">Editorial Calendar</div>
+                    <div class="metric-desc">All external security initiatives centralized with monthly review meetings established</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon">📊</div>
+                    <div class="metric-title">Trust Pulse Dashboard</div>
+                    <div class="metric-desc">Dashboard live and updating with 3 actionable insights delivered to leadership</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon">🎯</div>
+                    <div class="metric-title">Campaign Impact</div>
+                    <div class="metric-desc">Winning message frame identified with sales enablement assets created</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- WHY THIS WORKS -->
+        <div class="why-section">
+            <h3>Why This Approach Works</h3>
+            <div class="why-grid">
+                <div class="why-item">
+                    <div class="why-number">01</div>
+                    <div class="why-text">Tackles all four responsibilities systematically while leaving room to adjust based on what the team needs</div>
+                </div>
+                <div class="why-item">
+                    <div class="why-number">02</div>
+                    <div class="why-text">Builds on what's already working at Adobe (CAI, bug bounty, Trust Center) rather than starting from scratch</div>
+                </div>
+                <div class="why-item">
+                    <div class="why-number">03</div>
+                    <div class="why-text">The skill I'd develop most: translating technical security work into narratives that resonate with different audiences</div>
+                </div>
+                <div class="why-item">
+                    <div class="why-number">04</div>
+                    <div class="why-text">Creates tangible deliverables that can continue being used beyond the internship</div>
+                </div>
+                <div class="why-item">
+                    <div class="why-number">05</div>
+                    <div class="why-text">Involves working across teams (PSIRT, Product Security, Field) to understand how security enablement functions</div>
+                </div>
+                <div class="why-item">
+                    <div class="why-number">06</div>
+                    <div class="why-text">Tests real assumptions about messaging effectiveness, with data to show what worked and what didn't</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
